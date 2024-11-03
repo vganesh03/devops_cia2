@@ -43,17 +43,11 @@ jobs:
         with:
           name: node-app
 
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'gv-devops'
-          slot-name: 'Production'
-          package: .
+          app-name: 'gv-devops'  # Ensure this matches your Azure Web App name
+          slot-name: 'Production'  # Change if you are using deployment slots
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}  # Use the secret you created
+          package: .  # Deploy the entire directory
