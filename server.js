@@ -89,7 +89,7 @@ app.get("/rest/getAllUsers", (req, res) => {
 
 // Add Hello World route
 app.get("/", (req, res) => {
-  res.send("Hello There!");
+  res.send("Hello World!");
 });
 
 // Start the server
